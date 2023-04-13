@@ -41,7 +41,6 @@ npm_deps = [
 ]
 
 other_deps = [
-    "next-env.d.ts",
     "next.config.js",
     "tsconfig.json",
     "package.json",
