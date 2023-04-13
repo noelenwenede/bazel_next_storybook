@@ -55,11 +55,12 @@ storybook_bin.storybook_binary(
 
 js_run_devserver(
     name = "storybook_dev",
-    tool = ":storybook_binary",
+    # using a binary tool like :storybook_binary is not supported yet for 
+    # hot reloading as it runs like a js_binary.
+    command = "/".join([".."] * len(package_name().split("/"))) + "/node_modules/.bin/storybook",
     data = srcs + npm_deps + other_deps,
     chdir = package_name(),
     patch_node_fs = False,
-    grant_sandbox_write_permissions = True,
     args = [
         "dev",
         "-p 6009",
